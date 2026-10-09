@@ -24,3 +24,14 @@ int average = sum(numbers)/count(numbers);
 <number> ::= "0"| "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" |"10" | "11" | "12"
 <list> ::= "[" <components> "]"
 <components> ::= <number> | <number> "," <components>
+
+
+
+
+
+
+
+
+Part B 
+
+5. The current lines of code for the problem statement are unambiguous, meaning there is only one way for them to be written. Ambiguity could be added by changing the way the new numbers are added to the list. <components> could potentially have an option to be written as <components> "," <number> which would provide an alternative way to display the list in the parse tree. 
