@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 public class Application {
 
     private static final Pattern DECL_PATTERN = Pattern.compile("^\\s*(\\S+)\\s+(\\S+)\\s*=\\s*(.+)\\s*;\\s*$");
-    private static final Pattern VARIABLE_PATTERN = Pattern.compile("^[a-z][a-z0-9]*$");
+    private static final Pattern VARIABLE_PATTERN = Pattern.compile("^[a-z][a-z0-9_]*$");
     private static final Pattern AVERAGE_EXPR_PATTERN = Pattern.compile("^\\s*average\\s*\\(\\s*\\[([^]]*)]\\s*\\)\\s*$");
     private static final Pattern ARRAY_EXPR_PATTERN = Pattern.compile("^\\s*\\[([^]]*)]\\s*$");
     private static final Map<String, String> TYPE_LOOKUP_TABLE = Map.of(
@@ -57,7 +57,7 @@ public class Application {
         System.out.println("  int[] numbers = [5, 8, 12, 4, 10];");
         System.out.println("  double result = average([5, 8, 12, 4, 10]);");
         System.out.println();
-        System.out.println("Variable names must start with a lowercase letter and contain only lowercase letters or digits.");
+        System.out.println("Invalid variable name. Use lowercase letters, digits, or underscores, and start with a lowercase letter.");
         System.out.println("Only non-negative integers are supported.");
         System.out.println("Type 'exit' to quit.");
     }
@@ -112,11 +112,9 @@ public class Application {
 
     // Validate the expression and parse the number list
     private static Integer[] parseExpr(String type, String expr) {
-        Matcher exprMatcher = null;
+        Matcher exprMatcher = AVERAGE_EXPR_PATTERN.matcher(expr);
         if (type.equals("int[]")) {
             exprMatcher = ARRAY_EXPR_PATTERN.matcher(expr);
-        } else {
-            exprMatcher = AVERAGE_EXPR_PATTERN.matcher(expr);
         }
 
         if (!exprMatcher.matches()) {
