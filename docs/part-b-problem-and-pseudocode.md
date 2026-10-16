@@ -13,7 +13,7 @@ numbersString = INPUT
 // Parse and validate the input based on the defined syntax
 numbersArray = parse(numbersString)
 
-//Initialize total and count
+// Initialize total and count
 total = 0
 count = 0
 
@@ -24,7 +24,7 @@ for number in numbersArray {
 }
 
 // Calculate the average
-average = total/count
+average = total / count
 
 // Display the result
 print(average)
