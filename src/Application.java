@@ -101,7 +101,7 @@ public class Application {
         // check variable rule
         Matcher variableMatcher = VARIABLE_PATTERN.matcher(variable);
         if (!variableMatcher.matches()) {
-            System.out.println("Syntax error: Invalid variable name. It must start with a lowercase letter and contain only lowercase letters or digits.");
+            System.out.println("Syntax error: Invalid variable name. It must start with a lowercase letter and contain only lowercase letters, digits, or underscores.");
             return null;
         }
 
